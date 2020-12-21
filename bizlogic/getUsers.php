@@ -1,9 +1,12 @@
 <?php
     $con = mysqli_connect('localhost','root','','Exam');
 
+    $userEmail = $_GET["email"];
+    $userPassword = $_GET["password"];
+
     $response = array();
-    $selectUsers = 'select * from user';
-    $query = mysqli_query($con, $selectUsers);
+    $selectUser = "select * from user where email='$userEmail' AND password='$userPassword'";
+    $query = mysqli_query($con, $selectUser);
 
     if($query) {
         $i=0;
