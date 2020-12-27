@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import cookie from 'react-cookies';
 
 import styles from './login.module.css'
 
@@ -38,6 +39,8 @@ export default class Login extends Component {
             alert(message);
 
             if(message === 'Login success') {
+                cookie.save('userEmail', this.state.useremail, { path: '/' });
+                cookie.save('userPassword', this.state.userpassword, { path: '/' });
                 window.location = '/home';
             }
           });
